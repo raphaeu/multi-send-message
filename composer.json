@@ -1,0 +1,17 @@
+{
+    "name": "raphaeu/multi-send-message",
+    "description": "Sistema de envio de message",
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=7.0",
+        "guzzlehttp/guzzle": "^6.5",
+        "phpunit/php-timer": "1.0.9"
+
+    },
+    "autoload": {
+        "psr-4": {
+            "multiSendMessage\\": "src/"
+        }
+    }
+}
