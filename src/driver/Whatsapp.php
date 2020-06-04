@@ -26,7 +26,7 @@ class Whatsapp extends ChannelAbstract implements ChannelInterface
             if($to = $this->normalizePhone($to))
             {
                 $client = new Client();
-                $client->post($this->url, [RequestOptions::JSON => ["Phones"=>$to, "Body"=>$message]]);
+                $client->post($this->url, [RequestOptions::JSON => ["Phones"=>[$to], "Body"=>$message]]);
             }else{
                 $this->setError("Telefone informado inválido.");
            }
