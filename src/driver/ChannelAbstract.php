@@ -15,23 +15,10 @@ abstract class ChannelAbstract
     protected $token;
     protected $error;
 
-    public function setUrl($url)
-    {
-        $this->url = $url;
-    }
-
-    public function setToken($token)
-    {
-        $this->token = $token;
-    }
-
     public function getError()
     {
         return $this->error;
     }
 
-    protected function setError($error)
-    {
-        $this->error = $error;
-    }
+
 }

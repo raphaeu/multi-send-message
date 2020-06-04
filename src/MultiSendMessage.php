@@ -3,6 +3,7 @@ namespace multiSendMessage;
 
 
 use multiSendMessage\driver\ChannelInterface;
+use multiSendMessage\driver\SMSFlash;
 use multiSendMessage\driver\SmsPush;
 use multiSendMessage\driver\Telegram;
 use multiSendMessage\driver\Whatsapp;
@@ -26,6 +27,9 @@ class MultiSendMessage
                    break;
                case 'telegram':
                    self::$instance[$channel] = new Telegram(self::$config[$channel]['url'], self::$config[$channel]['token']);
+                   break;
+               case 'SMSFlash':
+                   self::$instance[$channel] = new SMSFlash(self::$config[$channel]['url'], self::$config[$channel]['token'], self::$config[$channel]['carteira_id']);
                    break;
                default:
                    throw new \Exception("Canal selecionado nao existe.");

@@ -12,7 +12,4 @@ namespace multiSendMessage\driver;
 interface ChannelInterface
 {
     public function send($to, $message) : ResultChannel;
-    public function setURL($url);
-    public function setToken($token);
-
 }
