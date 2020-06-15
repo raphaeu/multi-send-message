@@ -25,7 +25,7 @@ class Telegram extends ChannelAbstract implements ChannelInterface
         try
         {
             $client = new Client();
-            $client->request('GET',str_replace('[token]', $this->token, $this->url) . http_build_query(['text' => $message, 'chat_id' => $to]) );
+            $client->request('GET',str_replace('[token]', $this->token, $this->url). '?'. http_build_query(['text' => $message, 'chat_id' => $to]) );
         }catch (\Exception $e){
             $this->setError($e->getMessage());
         }
