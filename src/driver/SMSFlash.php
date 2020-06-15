@@ -30,25 +30,35 @@ class SMSFlash extends ChannelAbstract implements ChannelInterface
             if($to = $this->normalizePhone($to))
             {
                 $client = new Client();
-                $client->post($this->url,
+                $response = $client->post($this->url,
                     [
-                        "codigo_carteira" => $this->carteira_id,
-                        "codigo_fornecedor" => "MTExpert_Flash_Todas",
-                        "envios"=>[
-                            [
-                                "numero"=> $to,
-                                "mensagem"=> $message
-                            ]
-                        ]
-                    ], [
                         "headers"=> [
                             "Content-Type" => "application/json"
                             ,"Authorization" => $this->token
                         ]
-                    ]);
+                        ,"body" => json_encode(
+                        [
+                            "codigo_carteira" => $this->carteira_id,
+                            "codigo_fornecedor" => "MTExpert_Flash_Todas",
+                            "envios"=>[
+                                [
+                                    "numero"=> $to,
+                                    "mensagem"=> $message
+                                ]
+                            ]
+                        ])
+                    ]
+                );
+
+                $responseJson = json_decode($response->getBody());
+                if (!isset($responseJson[0]->status) || @$responseJson[0]->status != 'Inserido')
+                {
+                    $this->setError($response->getBody());
+                }
+
             }else{
                 $this->setError("Telefone informado inválido.");
-           }
+            }
         }catch (\Exception $e){
             $this->setError($e->getMessage());
         }
