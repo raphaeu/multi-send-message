@@ -20,5 +20,10 @@ abstract class ChannelAbstract
         return $this->error;
     }
 
+    protected function setError($error)
+    {
+        $this->error = $error;
+    }
+
 
 }
