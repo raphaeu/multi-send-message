@@ -30,7 +30,7 @@ class Phone extends ChannelAbstract implements ChannelInterface
         $timer = \PHP_Timer::stop();
         $fileName = $this->path .'/'. $to. '_' .md5($message).'.wav' ;
 
-        $url = "http://10.110.255.155:9090/rest/v2/synthesize?text=ola+mundo&voice=carlos-highquality.voice";
+        $url = "http://10.110.255.155:9090/rest/v2/synthesize?text=".urlencode($message)."&voice=carlos-highquality.voice";
         
         $client = new Client();
         $response = $client->request('GET', $url , ['timeout' => 5]);
@@ -39,7 +39,7 @@ class Phone extends ChannelAbstract implements ChannelInterface
         {
             file_put_contents($fileName, $response->getBody());
          }else{
-            throw new \ErrorException('Erro ao gerar TTS Cpqd.'.$text);
+            throw new \ErrorException('Erro ao gerar TTS Cpqd.');
         }        
 
         shell_exec("{$this->shellScriptPath} {$this->repeat} {$fileName} {$to}");
