@@ -30,12 +30,10 @@ class Phone extends ChannelAbstract implements ChannelInterface
         \PHP_Timer::start();
         
         $timer = \PHP_Timer::stop();
-        $fileName = $this->path .'/'. $to. '_' .md5($message).'.wav' ;
+        $fileName = $this->path .'/'. $to. '_'.microtimer() .md5($message).'.wav' ;
 
         Provider::GetInstanceTTS($this->providerName)->textToSpeech($message, 'M', $fileName);
 
-        shell_exec("{$this->shellScriptPath} {$this->repeat} {$fileName} {$to}");
-      
         return new ResultChannel($timer, $this->getError());
     }
 }
