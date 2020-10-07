@@ -3,17 +3,10 @@
     "description": "Sistema de envio de message",
     "license": "MIT",
     "type": "project",
-    "repositories": [
-        {
-          "type": "vcs",
-          "url": " git@bitbucket.org:projetos_services/providers.git"
-        }
-      ],
     "require": {
         "php": ">=7.0",
         "guzzlehttp/guzzle": "^6.5",
         "phpunit/php-timer": "1.0.9",
-        "projetos_services/providers": "1.0.0.0",
         "google/auth": "^1.6"
 
     },
