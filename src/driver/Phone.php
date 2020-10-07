@@ -33,10 +33,8 @@ class Phone extends ChannelAbstract implements ChannelInterface
         $fileName = $this->path .'/'. $to. '_' .md5($message).'.wav' ;
 
         Provider::GetInstanceTTS($this->providerName)->textToSpeech($message, 'M', $fileName);
-        
-        shell_exec('sox '.$fileName.' -e signed  -c 1 -r 8k '.$fileName);
 
-        shell_exec($x = "{$this->shellScriptPath} {$this->repeat} {$fileName} {$to}");
+        shell_exec("{$this->shellScriptPath} {$this->repeat} {$fileName} {$to}");
       
         return new ResultChannel($timer, $this->getError());
     }
