@@ -10,9 +10,9 @@ require __DIR__.'/../vendor/autoload.php';
 use \multiSendMessage\MultiSendMessage;
 
 
-MultiSendMessage::init(['telegram'=>['url'=>'https://[api_url]', 'token'=>'[numero_token]']]);
+MultiSendMessage::init(['phone'=>['shellScriptPath'=>'','path'=>'/tmp/','providerName'=>'Google','repeat'=>3 ]]);
 
-$result = MultiSendMessage::channel('telegram')->send('554199915726','oi');
+$result = MultiSendMessage::channel('phone')->send('554199915726','oi voce esta ai rafael?');
 
 echo "Error: ". $result->getError() . " Timer: ". $result->getTimer().PHP_EOL;
 
