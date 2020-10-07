@@ -36,8 +36,8 @@ class Phone extends ChannelAbstract implements ChannelInterface
         
         shell_exec('sox '.$fileName.' -e signed  -c 1 -r 8k '.$fileName);
 
-        shell_exec("{$this->shellScriptPath} {$this->repeat} {$to} {$fileName}.wav");
-
+        shell_exec($x = "{$this->shellScriptPath} {$this->repeat} {$fileName} {$to}");
+      
         return new ResultChannel($timer, $this->getError());
     }
 }
