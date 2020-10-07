@@ -33,7 +33,7 @@ class MultiSendMessage
                    self::$instance[$channel] = new SMSFlash(self::$config[$channel]['url'], self::$config[$channel]['token'], self::$config[$channel]['carteira_id']);
                    break;
                 case 'phone':
-                    self::$instance[$channel] = new Phone(self::$config[$channel]['shellScriptPath'],self::$config[$channel]['path'],self::$config[$channel]['providerName'],self::$config[$channel]['repeat']);
+                    self::$instance[$channel] = new Phone(self::$config[$channel]['shellScriptPath'],self::$config[$channel]['path'],self::$config[$channel]['repeat']);
                     break;                   
                default:
                    throw new \Exception("Canal selecionado nao existe.");
